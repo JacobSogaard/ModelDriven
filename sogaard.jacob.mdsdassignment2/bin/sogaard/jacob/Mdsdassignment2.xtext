@@ -1,0 +1,33 @@
+grammar sogaard.jacob.Mdsdassignment2 with org.eclipse.xtext.common.Terminals
+
+generate mdsdassignment2 "http://www.jacob.sogaard/Mdsdassignment2"
+
+
+
+MathExp:
+	'result' 'is' exp=Exp 'end'
+;
+
+Exp: // Illegal due to left recursion (Is fixed, Primary was Exp before.)
+	left=ExpOp (operator=ExpOp right=Exp)?
+;
+
+ExpOp:
+	Factor ( {Add.left=current} '+' right=Factor | {Sub.left=current} '-' right=Factor )*
+;
+
+Factor returns ExpOp:
+	Primary ( {Mult.left=current} '*' right=Primary | {Div.left=current} '/' right=Primary )*
+;
+
+Primary returns ExpOp:
+	Num | Parenthesis
+;
+
+Parenthesis:
+	'(' exp=Exp ')'
+;
+
+Num:
+	value=INT
+;
