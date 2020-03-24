@@ -1,0 +1,29 @@
+grammar org.xtext.example.mydsl.MyMath with org.eclipse.xtext.common.Terminals
+
+generate myMath "http://www.xtext.org/example/mydsl/MyMath"
+
+
+MathExp:
+	'result' 'is' exp=Exp 'end'
+;
+
+
+Exp returns Expression:
+	Factor (('+' {Add.left=current} | '-' {Sub.left=current}) right=Factor)*
+;
+
+Factor returns Expression:
+	Primary (('*' {Mult.left=current} | '/' {Div.left=current}) right=Primary)*
+;
+
+Primary returns Expression:
+	Number | Parenthesis
+;
+
+Parenthesis returns Expression:
+	'(' Exp ')'
+;
+
+Number returns Expression:
+	{Num} value=INT
+;
