@@ -1,0 +1,19 @@
+Entity movie [Star Wars, Pulp Fiction, Godfather, Godzilla]
+Entity cinema [Nordisk film, Kino, Rosengaardscentert]
+
+Intent pickmovie
+	HasFollowup
+	movie with 'Which movie would you like to see?'
+	date-time with 'On which day would you like to see a movie?'
+	
+	Training:
+	'I would like to see' ('Star Wars' is movie).
+	'Can i see a movie on' ('Wednesday' is date-time).
+	
+Intent pickCinema
+	IsFollowup pickmovie
+	cinema with 'In which cinema would you like to see the movie?'
+	
+	Training:
+	'We would like to wathc the movie at' ('Kino' is cinema).
+	'In' ('Nordisk film' is cinema).

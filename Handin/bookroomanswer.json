@@ -1,73 +1,67 @@
 {
-"id": "60zg0bz6ghkl2m7lhlkoqf4pssvfgi5qqf2g",
+"id": "uo89e9xso7003ii0b7zidj31f7-1r53n-rny",
 "name": "bookroomanswer",
 "auto": true,
 "contexts": [],
 "responses": [
-		{
-		"resetContexts": false,
-		"affectedContexts": [
+    {
+    "resetContexts": false,
+    "affectedContexts": [
         {
           "name": "bookroomanswer-followup",
           "parameters": {},
           "lifespan": 2
         }
         ],
-	"parameter": [
+  "parameters": [
 { 
-          "id": "x91y-t0heajfkk1a2euabtpy4h7eig6jdsh-",
-          "required": false
+          "required": true,
           "dataType": "@sys.date-time",
-          "name": "sys.date-time",
-          "value": "$sys.date-time",
+          "name": "date-time",
+          "value": "$date-time",
           "prompts": [
-            {
-              "lang": "en",
-              "value": "'On which day would you like to book a room'"
-            }
+              "'On which day would you like to book a room'"
           ],
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
           "outputDialogContexts": [],
-          "isList": false
+          "isList": false,
+          "defaultValue": ""
+          
         },
 { 
-          "id": "4bduuuelk87sud2mb3tclg1uxizd7lqlju2x",
-          "required": false
+          "required": true,
           "dataType": "@place",
           "name": "place",
           "value": "$place",
           "prompts": [
-            {
-              "lang": "en",
-              "value": "'In which building would you like to book?'"
-            }
+              "'In which building would you like to book?'"
           ],
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
           "outputDialogContexts": [],
-          "isList": false
+          "isList": false,
+          "defaultValue": ""
+          
         },
 { 
-          "id": "kkghgat8bxxzpe0kosi3ozxztmbqs0udy3hd",
-          "required": false
+          "required": true,
           "dataType": "@sys.number",
-          "name": "sys.number",
-          "value": "$sys.number",
+          "name": "number",
+          "value": "$number",
           "prompts": [
-            {
-              "lang": "en",
-              "value": "'How many people would you like to book for?'"
-            }
+              "'How many people would you like to book for?'"
           ],
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
           "outputDialogContexts": [],
-          "isList": false
-        },
+          "isList": false,
+          "defaultValue": ""
+          
+        }
 ],
       "messages": [
         {
