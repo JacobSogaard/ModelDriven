@@ -1,0 +1,53 @@
+{
+"id": "cnj6k6jb57h-n0zc7ou4kltsigfvuvrdv4bd",
+"name": "showrooms",
+"auto": true,
+"contexts": [
+			    "bookroomanswer-followup"
+			  ],
+			  "responses": [
+			  					{
+			  					"resetContexts": false,
+			  					"action": ""
+			  					"affectedContexts":[],
+	"parameter": [
+{ 
+          "id": "xgtq0v3c4angpsm8t0yhsacxqahrp7fl5fgi",
+          "required": false
+          "dataType": "@room",
+          "name": "room",
+          "value": "$room",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "'Which room would you like to book?'"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

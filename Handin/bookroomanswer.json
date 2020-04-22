@@ -1,0 +1,92 @@
+{
+"id": "60zg0bz6ghkl2m7lhlkoqf4pssvfgi5qqf2g",
+"name": "bookroomanswer",
+"auto": true,
+"contexts": [],
+"responses": [
+		{
+		"resetContexts": false,
+		"affectedContexts": [
+        {
+          "name": "bookroomanswer-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+        ],
+	"parameter": [
+{ 
+          "id": "x91y-t0heajfkk1a2euabtpy4h7eig6jdsh-",
+          "required": false
+          "dataType": "@sys.date-time",
+          "name": "sys.date-time",
+          "value": "$sys.date-time",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "'On which day would you like to book a room'"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+{ 
+          "id": "4bduuuelk87sud2mb3tclg1uxizd7lqlju2x",
+          "required": false
+          "dataType": "@place",
+          "name": "place",
+          "value": "$place",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "'In which building would you like to book?'"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+{ 
+          "id": "kkghgat8bxxzpe0kosi3ozxztmbqs0udy3hd",
+          "required": false
+          "dataType": "@sys.number",
+          "name": "sys.number",
+          "value": "$sys.number",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "'How many people would you like to book for?'"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}
