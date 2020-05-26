@@ -9,6 +9,10 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.dslproject.Entity
 import org.xtext.example.dslproject.Intent
 import org.xtext.example.dslproject.Reference
+import org.xtext.example.dslproject.Training
+import org.xtext.example.dslproject.TrainingInput
+import org.xtext.example.dslproject.Sin
+import org.xtext.example.dslproject.Decl
 
 /**
  * Generates code from your model files on save.
@@ -29,6 +33,8 @@ class DslprojectGenerator extends AbstractGenerator {
 	
 	def generateIntentFile(Intent intent, IFileSystemAccess2 fsa) {
 		fsa.generateFile(intent.name + ".json", intent.generateIntent)
+		
+		fsa.generateFile(intent.name + "_usersays_en.json", intent.training.generateTrainingPhrases)
 	}
 	
 	def CharSequence generateIntent(Intent intent)
@@ -107,6 +113,41 @@ class DslprojectGenerator extends AbstractGenerator {
 		  "conditionalFollowupEvents": []
 		}
 		'''
+		
+	def CharSequence generateTrainingPhrases(Training training) '''
+	[
+		«FOR train: training.trainingref»
+		{
+			"id": "«36.generateId»",
+			    "data": [
+			«FOR in: train.input»
+				«in.generateTrainingInput»
+			«ENDFOR»
+		
+		],
+		"isTemplate": false,
+		    "count": 0,
+		    "updated": 0
+		    },
+		  «ENDFOR»
+	]
+	'''
+	
+	def CharSequence generateTrainingInput(TrainingInput input){
+		switch input {
+			Sin: '''{
+				"text": " «input.s» ",
+				"userDefined": false
+			},'''
+			Decl: '''{
+				"text": "«input.declarations.trainingstring»",
+				"alias": "«input.declarations.reference.getEntityType»",
+				"meta": "@«input.declarations.reference.getEntityType»",
+				"userDefined": false
+			},'''
+			default: ''''''
+		}
+	}
 		
 	def CharSequence generateFollowupIntent(Intent intent) '''
 	'''

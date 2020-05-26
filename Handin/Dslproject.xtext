@@ -16,6 +16,11 @@ Intent:
 	'Intent' name=ID (hasFollowup=HasFollowup)? (isFollowup=IsFollowup)? question+=Question+ training=Training
 ;
 
+//left factorization?????
+Follow:
+	left=[Intent] ('->' right=[Intent])*
+;
+
 Entity:
 	 'Entity' name=ID '[' example+=EntityExample+ ']'
 ;
@@ -42,8 +47,13 @@ Training:
 ;
 
 TrainingRef:
-	{TrainingRefSimple} (STRING | declarations+=Declaration)+ '.'
+	input+=TrainingInput+ '.'
 ;
+
+TrainingInput:
+	{Sin} s=STRING | {Decl} declarations=Declaration
+;
+
 
 Declaration:
 	'(' trainingstring=STRING 'is' reference=Reference ')'
@@ -65,7 +75,6 @@ Sysvariable:
 	value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
 		| 'time-period' | 'url' | 'any' | 'color' | 'language'
 	)
-	
 ;
 
 Reference:
