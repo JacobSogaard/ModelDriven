@@ -9,31 +9,31 @@ Model:
 ;
 
 Agent:
-	Entity | Intent
+	Entity | Intent | FollowRelation
 ;
 	
 Intent:
-	'Intent' name=ID (':' zuper=[Intent])? (isFollowup=IsFollowup)? question+=Question+ training=Training
+	'Intent' name=ID ('extends' zuper=[Intent])? question+=QuestionRef+ training=Training
 ;
 
 Entity:
 	 'Entity' name=ID '[' example+=EntityExample+ ']'
 ;
 
+QuestionRef:
+	question=Question | superQuestion=SuperQuestion
+;
+
 Question: 
-	required=Required? questionEntity=QuestionEntity 'with' prompt=Prompt
+	required='require'? name=ID? '='? questionEntity=QuestionEntity 'with' prompt=STRING
+;
+
+SuperQuestion:
+	'get' superQuestion=[Question]
 ;
 
 QuestionEntity:
 	withEntity=Reference
-;
-
-Prompt:
-	STRING
-;
-
-Required:
-	'require'
 ;
 
 Training:
@@ -58,10 +58,6 @@ EntityExample:
 	name=ID ','? //Doesn't need to be name=ID (cannot use spaces)
 ;
 
-IsFollowup:
-	'IsFollowup' intent=[Intent]
-;
-
 Sysvariable:
 	value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
 		| 'time-period' | 'url' | 'any' | 'color' | 'language'
@@ -70,4 +66,8 @@ Sysvariable:
 
 Reference:
 	entity=[Entity] | sysvar=Sysvariable
+;
+
+FollowRelation:
+	'(' parent=[Intent] '->' child=[Intent] ')'
 ;
